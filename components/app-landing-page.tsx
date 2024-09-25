@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
-import Particles from 'react-particles'
-import { loadFull } from 'tsparticles'
+import { DotPattern } from './magicui/dot-pattern'
 
 const tutorialSlides = [
   {
@@ -29,9 +28,12 @@ const tutorialSlides = [
   }
 ]
 
-export function LandingPageComponent({ onGetStarted }) {
+interface LandingPageComponentProps {
+  onGetStarted: () => void;
+}
+
+export function LandingPageComponent({ onGetStarted }: LandingPageComponentProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [particlesInit, setParticlesInit] = useState(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,88 +42,15 @@ export function LandingPageComponent({ onGetStarted }) {
     return () => clearInterval(interval)
   }, [])
 
-  const particlesLoaded = async (container) => {
-    await console.log(container)
-  }
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-4 relative overflow-hidden">
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        loaded={particlesLoaded}
-        options={{
-          background: {
-            color: {
-              value: "#111827",
-            },
-          },
-          fpsLimit: 120,
-          interactivity: {
-            events: {
-              onClick: {
-                enable: true,
-                mode: "push",
-              },
-              onHover: {
-                enable: true,
-                mode: "repulse",
-              },
-              resize: true,
-            },
-            modes: {
-              push: {
-                quantity: 4,
-              },
-              repulse: {
-                distance: 200,
-                duration: 0.4,
-              },
-            },
-          },
-          particles: {
-            color: {
-              value: "#ffffff",
-            },
-            links: {
-              color: "#ffffff",
-              distance: 150,
-              enable: true,
-              opacity: 0.5,
-              width: 1,
-            },
-            collisions: {
-              enable: true,
-            },
-            move: {
-              direction: "none",
-              enable: true,
-              outModes: {
-                default: "bounce",
-              },
-              random: false,
-              speed: 2,
-              straight: false,
-            },
-            number: {
-              density: {
-                enable: true,
-                area: 800,
-              },
-              value: 80,
-            },
-            opacity: {
-              value: 0.5,
-            },
-            shape: {
-              type: "circle",
-            },
-            size: {
-              value: { min: 1, max: 5 },
-            },
-          },
-          detectRetina: true,
-        }}
+    <div className="relative min-h-screen w-full flex items-center justify-center">
+      <DotPattern
+        width={32}
+        height={32}
+        cx={1}
+        cy={1}
+        cr={1}
+        className="absolute inset-0 h-full w-full text-foreground/[0.05] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
       />
       <div className="text-center max-w-md z-10">
         <h1 className="text-4xl font-bold text-white mb-4">Welcome to MyApp</h1>

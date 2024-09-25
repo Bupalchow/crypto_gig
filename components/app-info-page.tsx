@@ -3,7 +3,15 @@
 import {NavbarComponent} from './app-navbar'
 import { Button } from '@/components/ui/button'
 
-export function InfoPageComponent({ item, onBack }) {
+type Category = {
+  id: string;
+  title: string;
+  icon: string;
+}
+
+export function InfoPageComponent({ item, onBack }: { item: Category | null; onBack: () => void }) {
+  if (!item) return null;
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-900">
       <NavbarComponent />

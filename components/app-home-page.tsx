@@ -3,6 +3,12 @@
 import {NavbarComponent} from './app-navbar'
 import { Button } from '@/components/ui/button'
 
+type Category = {
+  id: string;
+  title: string;
+  icon: string;
+}
+
 const CATEGORIES = [
   { id: '1', title: 'Category 1', icon: '🍎' },
   { id: '2', title: 'Category 2', icon: '🚗' },
@@ -11,7 +17,7 @@ const CATEGORIES = [
   { id: '5', title: 'Category 5', icon: '🎵' },
 ]
 
-export function HomePageComponent({ onItemClick }) {
+export function HomePageComponent({ onItemClick }: { onItemClick: (item: Category) => void }) {
   return (
     <div className="min-h-screen flex flex-col bg-gray-900">
       <NavbarComponent />
