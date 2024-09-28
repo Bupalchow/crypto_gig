@@ -8,14 +8,16 @@ import { InfoPageComponent } from '../components/app-info-page'
 type Category = {
   id: string;
   title: string;
-  icon: string;
-}
+  description: string;
+  imageUrl: string;
+  link: string;
+};
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('landing')
+  const [currentPage, setCurrentPage] = useState<'landing' | 'home' | 'info'>('landing')
   const [selectedItem, setSelectedItem] = useState<Category | null>(null)
 
-  const navigateTo = (page: string, item: Category | null = null) => {
+  const navigateTo = (page: 'landing' | 'home' | 'info', item: Category | null = null) => {
     setCurrentPage(page)
     if (item) setSelectedItem(item)
   }
@@ -24,7 +26,9 @@ export default function App() {
     <div className="min-h-screen bg-gray-900 text-white">
       {currentPage === 'landing' && <LandingPageComponent onGetStarted={() => navigateTo('home')} />}
       {currentPage === 'home' && <HomePageComponent onItemClick={(item: Category) => navigateTo('info', item)} />}
-      {currentPage === 'info' && <InfoPageComponent item={selectedItem} onBack={() => navigateTo('home')} />}
+      {currentPage === 'info' && selectedItem && (
+        <InfoPageComponent item={selectedItem} onBack={() => navigateTo('home')} />
+      )}
     </div>
   )
 }
