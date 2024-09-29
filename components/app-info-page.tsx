@@ -41,7 +41,7 @@ export function InfoPageComponent({ item, onBack }: { item: firebaseCategory | n
             Back to Home
           </Button>
           <Button onClick={handleStartEarning} className="bg-blue-600 hover:bg-blue-700 text-white">
-            Start Earning (+20🪙)
+            Start Earning (+10🪙)
           </Button>
         </div>
       </main>

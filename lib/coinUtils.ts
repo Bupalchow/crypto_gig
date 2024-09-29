@@ -17,7 +17,7 @@ export const incrementCoins = async (userId: string, amount: number) => {
     return newCoins;
   } catch (error) {
     console.error('Error incrementing coins:', error);
-    return userCoins[userId];
+    return 10;
   }
 };
 
