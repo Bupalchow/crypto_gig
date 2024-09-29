@@ -1,9 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { LandingPageComponent } from '../components/app-landing-page'
-import { HomePageComponent } from '../components/app-home-page'
-import { InfoPageComponent } from '../components/app-info-page'
+import dynamic from 'next/dynamic';
+import { useState } from 'react';
+
+const LandingPageComponent = dynamic(() => import('../components/app-landing-page').then(mod => mod.LandingPageComponent), { ssr: false });
+const HomePageComponent = dynamic(() => import('../components/app-home-page').then(mod => mod.HomePageComponent), { ssr: false });
+const InfoPageComponent = dynamic(() => import('../components/app-info-page').then(mod => mod.InfoPageComponent), { ssr: false });
 
 type Category = {
   id: string;
@@ -13,21 +15,14 @@ type Category = {
   link: string;
 };
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState<'landing' | 'home' | 'info'>('landing')
-  const [selectedItem, setSelectedItem] = useState<Category | null>(null)
+const App = () => {
+  const [currentPage, setCurrentPage] = useState<'landing' | 'home' | 'info'>('landing');
+  const [selectedItem, setSelectedItem] = useState<Category | null>(null);
 
   const navigateTo = (page: 'landing' | 'home' | 'info', item: Category | null = null) => {
-    setCurrentPage(page)
-    if (item) setSelectedItem(item)
-  }
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // Your client-side only code can be placed here
-      console.log('Window is defined');
-    }
-  }, [])
+    setCurrentPage(page);
+    if (item) setSelectedItem(item);
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -37,5 +32,7 @@ export default function App() {
         <InfoPageComponent item={selectedItem} onBack={() => navigateTo('home')} />
       )}
     </div>
-  )
-}
+  );
+};
+
+export default App;

@@ -24,8 +24,9 @@ export function InfoPageComponent({ item, onBack }: { item: firebaseCategory | n
       console.error('User data not found');
     }
 
-    // Open the link after the coin increment is successful
-    window.open(item.link, '_blank');
+    if (typeof window !== 'undefined') {
+      window.open(item.link, '_blank');
+    }
   };
 
   return (
