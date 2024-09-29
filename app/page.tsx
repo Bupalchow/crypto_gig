@@ -24,7 +24,8 @@ export default function App() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // Any code that uses window or browser-specific features goes here
+      // Your client-side only code can be placed here
+      console.log('Window is defined');
     }
   }, [])
 
