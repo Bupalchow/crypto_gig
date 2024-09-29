@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { LandingPageComponent } from '../components/app-landing-page'
 import { HomePageComponent } from '../components/app-home-page'
 import { InfoPageComponent } from '../components/app-info-page'
@@ -21,6 +21,12 @@ export default function App() {
     setCurrentPage(page)
     if (item) setSelectedItem(item)
   }
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Any code that uses window or browser-specific features goes here
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
