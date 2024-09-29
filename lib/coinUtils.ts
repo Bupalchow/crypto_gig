@@ -1,4 +1,3 @@
-
 import { db } from './firebase';
 import { ref, get, update } from 'firebase/database';
 
@@ -18,8 +17,16 @@ export const incrementCoins = async (userId: string, amount: number) => {
   }
 };
 
-export const getUserCoins = async (userId: string) => {
-  const userRef = ref(db, `users/${userId}/coins`);
-  const snapshot = await get(userRef);
-  return snapshot.exists() ? snapshot.val() : 0;
-};
+export async function getUserCoins(userId: string): Promise<number> {
+  try {
+    const response = await fetch(`/api/coins/${userId}`)
+    if (!response.ok) {
+      throw new Error('Failed to fetch user coins')
+    }
+    const data = await response.json()
+    return data.coins
+  } catch (error) {
+    console.error('Error fetching user coins:', error)
+    throw error
+  }
+}

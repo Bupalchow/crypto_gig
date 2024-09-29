@@ -3,7 +3,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import WebApp from '@twa-dev/sdk'
 import { useEffect, useState } from 'react';
-import { getUserCoins } from '../lib/coinUtils'; // Import utility function
+import { getUserCoins } from '../lib/coinUtils'; 
 
 interface UserData {
   id: number;

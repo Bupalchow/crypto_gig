@@ -12,8 +12,6 @@ export function InfoPageComponent({ item, onBack }: { item: firebaseCategory | n
   const handleStartEarning = async () => {
     if (WebApp.initDataUnsafe.user) {
       const userId = WebApp.initDataUnsafe.user.id.toString();
-
-      // Increment the user's coins by 20
       const newCoinBalance = await incrementCoins(userId, 20);
       if (newCoinBalance !== null) {
         console.log('Coins successfully updated:', newCoinBalance);
@@ -43,7 +41,7 @@ export function InfoPageComponent({ item, onBack }: { item: firebaseCategory | n
             Back to Home
           </Button>
           <Button onClick={handleStartEarning} className="bg-blue-600 hover:bg-blue-700 text-white">
-            Start Earning
+            Start Earning (+20🪙)
           </Button>
         </div>
       </main>
