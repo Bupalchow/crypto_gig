@@ -7,24 +7,29 @@ import { DotPattern } from './magicui/dot-pattern'
 
 const tutorialSlides = [
   {
-    title: 'Browse Categories',
-    description: 'Explore various categories on the home page',
-    image: '/placeholder.svg?height=200&width=200'
+    title: 'Crypto Gig',
+    description: 'New way to make money online',
+    image: 'https://cdn3d.iconscout.com/3d/premium/thumb/cryptocurrency-wallet-5432053-4533151.png'
   },
   {
-    title: 'View Details',
-    description: 'Click on a category to see more information',
-    image: '/placeholder.svg?height=200&width=200'
+    title: 'Air Drops',
+    description: 'Get the list of hot and trending Airdrops',
+    image: 'https://www.cryptomining.com.pl/wp-content/uploads/2019/12/Airdrop-cryptomining.png'
+  },
+  {
+    title: 'Earn real cash',
+    description: 'Earn real cash by participating in those Airdrops  ',
+    image: 'https://i.pinimg.com/originals/9e/3d/b6/9e3db62b64ec5c7881e711bf294427dd.jpg'
   },
   {
     title: 'Earn Coins',
-    description: 'Interact with the app to earn coins',
-    image: '/placeholder.svg?height=200&width=200'
+    description: 'Even earn coins for participating in those Airdrop events',
+    image: 'https://laborx.com/static/images/landing/benefits/crypto-payments-banner.png'
   },
   {
-    title: 'Check Balance',
-    description: 'View your coin balance in the top navbar',
-    image: '/placeholder.svg?height=200&width=200'
+    title: 'Redeem to real cash',
+    description: 'Once we are on mainnet get real value ',
+    image: 'https://png.pngtree.com/png-vector/20230120/ourmid/pngtree-earning-and-making-money-in-internet-concept-png-image_6567933.png'
   }
 ]
 
@@ -53,8 +58,8 @@ export function LandingPageComponent({ onGetStarted }: LandingPageComponentProps
         className="absolute inset-0 h-full w-full text-foreground/[0.05] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
       />
       <div className="text-center max-w-md z-10">
-        <h1 className="text-4xl font-bold text-white mb-4">Welcome to MyApp</h1>
-        <p className="text-xl text-gray-300 mb-8">Discover amazing content</p>
+        <h1 className="text-4xl font-bold text-white mb-4">Welcome to Crypto Gig</h1>
+        <p className="text-xl text-gray-300 mb-8">Never miss the opportunity to make money</p>
         <div className="bg-gray-800 p-4 rounded-lg mb-8">
           <h2 className="text-lg font-semibold text-white mb-2">Quick Tutorial:</h2>
           <motion.div
@@ -75,7 +80,7 @@ export function LandingPageComponent({ onGetStarted }: LandingPageComponentProps
           </motion.div>
         </div>
         <Button onClick={onGetStarted} className="bg-purple-600 text-white hover:bg-purple-700">
-          Get Started
+         Start Earning
         </Button>
       </div>
     </div>

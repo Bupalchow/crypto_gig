@@ -1,5 +1,3 @@
-'use client'
-
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import WebApp from '@twa-dev/sdk'
 import { useEffect, useState } from 'react';
@@ -16,7 +14,7 @@ interface UserData {
 
 export function NavbarComponent() {
   const [userData, setUserData] = useState<UserData | null>(null);
-  const [coins, setCoins] = useState<number>(0);
+  const [coins, setCoins] = useState<number>(10);
 
   useEffect(() => {
     if (WebApp.initDataUnsafe.user) {
@@ -39,10 +37,10 @@ export function NavbarComponent() {
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>{userData?.first_name}</AvatarFallback>
         </Avatar>
-        <span className="font-semibold text-white">{userData?.first_name || 'lal'}</span>
+        <span className="font-semibold text-white">{userData?.first_name || 'Login Via Telegram Bot'}</span>
       </div>
-      <div className="bg-yellow-500 px-3 py-1 rounded-full">
-        <span className="font-bold text-gray-900">🪙 {coins || 10}</span>
+      <div className="bg-blue-600 px-3 py-1 rounded-full">
+        <span className="font-bold text-white">🪙 {coins}</span>
       </div>
     </nav>
   );
