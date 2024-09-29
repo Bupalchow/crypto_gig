@@ -21,7 +21,7 @@ export function HomePageComponent({ onItemClick }: { onItemClick: (item: firebas
     <div className="min-h-screen flex flex-col bg-gray-900">
       <NavbarComponent />
       <main className="flex-grow p-4">
-        <h2 className="text-2xl font-bold mb-4 text-white">Categories</h2>
+        <h2 className="text-2xl font-bold mb-4 text-white">Available Airdrops</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {categories.map((category) => (
             <Button

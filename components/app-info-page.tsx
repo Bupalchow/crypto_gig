@@ -1,12 +1,32 @@
 'use client'
 
-import {NavbarComponent} from './app-navbar'
-import { Button } from '@/components/ui/button'
-import { firebaseCategory } from '@/lib/firebase'
-
+import { incrementCoins } from '@/lib/coinUtils';
+import { NavbarComponent } from './app-navbar';
+import { Button } from '@/components/ui/button';
+import { firebaseCategory } from '@/lib/firebase';
+import WebApp from '@twa-dev/sdk'
 
 export function InfoPageComponent({ item, onBack }: { item: firebaseCategory | null; onBack: () => void }) {
   if (!item) return null;
+
+  const handleStartEarning = async () => {
+    if (WebApp.initDataUnsafe.user) {
+      const userId = WebApp.initDataUnsafe.user.id.toString();
+
+      // Increment the user's coins by 20
+      const newCoinBalance = await incrementCoins(userId, 20);
+      if (newCoinBalance !== null) {
+        console.log('Coins successfully updated:', newCoinBalance);
+      } else {
+        console.error('Failed to update coins');
+      }
+    } else {
+      console.error('User data not found');
+    }
+
+    // Open the link after the coin increment is successful
+    window.open(item.link, '_blank');
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-900">
@@ -21,7 +41,7 @@ export function InfoPageComponent({ item, onBack }: { item: firebaseCategory | n
           <Button onClick={onBack} className="bg-purple-600 hover:bg-purple-700 text-white">
             Back to Home
           </Button>
-          <Button onClick={() => window.open(item.link, '_blank')} className="bg-blue-600 hover:bg-blue-700 text-white">
+          <Button onClick={handleStartEarning} className="bg-blue-600 hover:bg-blue-700 text-white">
             Start Earning
           </Button>
         </div>
